@@ -10,8 +10,8 @@ var RecommendationSchema = new Schema({
 	category : {type : String, required : true},
 	comment : {type : String, required : false},
 	title : {type : String, required : true},
-	from_id : {type : String, required : true},
-	to_id : {type : String, required : true},
+	from_user : {type : String, required : true},
+	to_user : {type : String, required : true},
 }, {
 	timestamps: true
 });

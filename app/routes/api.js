@@ -165,8 +165,8 @@ module.exports = function(app, express) {
 			rec.category = req.body.category;
 			rec.comment = req.body.comment;
 			rec.title = req.body.title;
-			rec.from_id = req.body.from_id;
-			rec.to_id = req.body.to_id;
+			rec.from_user = req.body.from_user;
+			rec.to_user = req.body.to_user;
 						
 			rec.save(function(err) {
 			
