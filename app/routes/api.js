@@ -41,7 +41,7 @@ module.exports = function(app, express) {
 					return res.send(err);
 				}
 				
-				res.json({ errmsg: "Nil", message: "User created!", user_id: user.id });
+				res.json({ errmsg: "Nil", message: "User created!", user_id: user.id, username: user.username });
 			
 			});
 		})
