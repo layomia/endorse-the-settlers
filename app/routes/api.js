@@ -1,5 +1,5 @@
 //  api.js
-//  List
+//  Endorse
 
 var User = require("../models/user");
 var Recommendation = require("../models/recommendation");
