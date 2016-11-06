@@ -189,12 +189,12 @@ module.exports = function(app, express) {
 			});
 		});
 	
-	apiRouter.route('/recommendations/:user_id')
+	apiRouter.route('/recommendations/:username')
 
 		// get the recommendations associated with this user id
-		// (accessed at GET https://endorse-backend-api.herokuapp.com/api/recommendations/:user_id)
+		// (accessed at GET https://endorse-backend-api.herokuapp.com/api/recommendations/:username)
 		.get(function(req, res) {
-			Recommendation.find({to_id: req.params.user_id}, function(err, recommendations) {
+			Recommendation.find({to_user: req.params.username}, function(err, recommendations) {
 				if (err) 
 					res.send(err);
 
