@@ -66,7 +66,7 @@ module.exports = function(app, express) {
 		// select the name email and password explicitly
 		User.findOne({
 			email: req.body.email
-		}).select('email password').exec(function(err, user) {
+		}).select('email password username').exec(function(err, user) {
 
 			if (err) throw err;
 
@@ -108,8 +108,6 @@ module.exports = function(app, express) {
 			});
 		})
 	
-		// update the user with this id
-		// (accessed at PUT https://endorse-backend-api.herokuapp.com/api/users/:user_id)
 		.put(function(req, res) {
 		
 			// use user model to find user
