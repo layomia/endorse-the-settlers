@@ -1,12 +1,12 @@
-//  user.js
-//  List
+// user.js
+// Endorse
 
-//CALL PACKAGES
+// CALL PACKAGES
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var bcrypt = require("bcrypt-nodejs");
 
-//user schema
+// user schema
 var UserSchema = new Schema({
 	firstName: { type: String, required: true },
 	 lastName: { type: String, required: true },

@@ -2,6 +2,7 @@
 //  List
 
 var User = require("../models/user");
+var Recommendation = require("../models/recommendation");
 
 module.exports = function(app, express) {
 	
@@ -150,6 +151,57 @@ module.exports = function(app, express) {
 					return res.send(err);
 				else
 					res.json({ message: 'Successfully deleted' });
+			});
+		});
+	
+	apiRouter.route('/recommendations')
+	
+		// create recommendations
+		.post(function(req, res) {
+			//new instance of User model
+			var rec = new Recommendation();
+			
+			//set users information (which comes from request)
+			rec.category = req.body.category;
+			rec.comment = req.body.comment;
+			rec.title = req.body.title;
+			rec.from_id = req.body.from_id;
+			rec.to_id = req.body.to_id;
+						
+			rec.save(function(err) {
+			
+				if (err) {
+					return res.send(err);
+				}
+				
+				res.json({ errmsg: "Nil", message: "Recommendation created!", recommendation_id: rec.id });
+			
+			});
+		})
+	
+		.get(function(req, res) {
+			//attempt to find all recommendations
+			Recommendation.find(function(err, recommendations) {
+				//if error, return error
+				if (err)
+					res.send(err);
+				
+				//return all recommendations
+				res.json(recommendations);
+			});
+		});
+	
+	apiRouter.route('/recommendations/:user_id')
+
+		// get the recommendations associated with this user id
+		// (accessed at GET https://endorse-backend-api.herokuapp.com/api/recommendations/:user_id)
+		.get(function(req, res) {
+			Recommendation.find({to_id: req.params.user_id}, function(err, recommendations) {
+				if (err) 
+					res.send(err);
+
+				// return those recommendations
+				res.json(recommendations);
 			});
 		});
 	
